@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript DSA Problems - Part 3</title>
+    <h1>JavaScript DSA Problems - Part 3</h1>
+
+    <div class="problem">
+        <h2>21. Find the Sum of an Array</h2>
+        <pre>Input: [1, 2, 3, 4, 5]</pre>
+        <button onclick="showArraySum()">Show Answer</button>
+        <p id="arraySumResult"></p>
+    </div>
+
+    <div class="problem">
+        <h2>22. Flatten a Nested Array</h2>
+        <pre>Input: [1, [2, [3, 4]], 5]</pre>
+        <button onclick="showFlattenArray()">Show Answer</button>
+        <p id="flattenArrayResult"></p>
+    </div>
+
+    <div class="problem">
+        <h2>23. Find the Frequency of Elements in an Array</h2>
+        <pre>Input: [1, 2, 2, 3, 3, 3]</pre>
+        <button onclick="showFrequency()">Show Answer</button>
+        <p id="frequencyResult"></p>
+    </div>
+
+    <div class="problem">
+        <h2>24. Check if a String Contains Only Digits</h2>
+        <pre>Input: "12345"</pre>
+        <button onclick="showIsOnlyDigits()">Show Answer</button>
+        <p id="isOnlyDigitsResult"></p>
+    </div>
+
+    <div class="problem">
+        <h2>25. Capitalize the First Letter of Each Word</h2>
+        <pre>Input: "hello world"</pre>
+        <button onclick="showCapitalizeWords()">Show Answer</button>
+        <p id="capitalizeWordsResult"></p>
+    </div>
+
+    <div class="problem">
+        <h2>26. Find the Intersection of Two Arrays</h2>
+        <pre>Input: [1, 2, 3], [2, 3, 4]</pre>
+        <button onclick="showIntersection()">Show Answer</button>
+        <p id="intersectionResult"></p>
+    </div>
+
+    <div class="problem">
+        <h2>27. Sort an Array of Strings by Length</h2>
+        <pre>Input: ["apple", "kiwi", "banana", "cherry"]</pre>
+        <button onclick="showSortByLength()">Show Answer</button>
+        <p id="sortByLengthResult"></p>
+    </div>
+
+    <div class="problem">
+        <h2>28. Find the Factorial of a Number</h2>
+        <pre>Input: 5</pre>
+        <button onclick="showFactorial()">Show Answer</button>
+        <p id="factorialResult"></p>
+    </div>
+
+    <div class="problem">
+        <h2>29. Merge Two Sorted Arrays</h2>
+        <pre>Input: [1, 3, 5], [2, 4, 6]</pre>
+        <button onclick="showMergeSorted()">Show Answer</button>
+        <p id="mergeSortedResult"></p>
+    </div>
+
+    <div class="problem">
+        <h2>30. Remove Falsy Values from an Array</h2>
+        <pre>Input: [0, 1, false, 2, "", 3, null]</pre>
+        <button onclick="showRemoveFalsy()">Show Answer</button>
+        <p id="removeFalsyResult"></p>
+    </div>
+
+    <script>
+        // 21. Find the Sum of an Array
+        function arraySum(arr) {
+            let sum = 0;
+            for (let num of arr) {
+                sum += num;
+            }
+            return sum;
+        }
+        function showArraySum() {
+            const input = [1, 2, 3, 4, 5];
+            document.getElementById('arraySumResult').innerText = `Sum: ${arraySum(input)}`;
+        }
+
+        // 22. Flatten a Nested Array
+        function flattenArray(arr) {
+            let result = [];
+            for (let item of arr) {
+                if (Array.isArray(item)) {
+                    result = result.concat(flattenArray(item));
+                } else {
+                    result.push(item);
+                }
+            }
+            return result;
+        }
+        function showFlattenArray() {
+            const input = [1, [2, [3, 4]], 5];
+            document.getElementById('flattenArrayResult').innerText = `Flattened: ${JSON.stringify(flattenArray(input))}`;
+        }
+
+        // 23. Find the Frequency of Elements in an Array
+        function frequencyCounter(arr) {
+            const freq = {};
+            for (let item of arr) {
+                freq[item] = (freq[item] || 0) + 1;
+            }
+            return freq;
+        }
+        function showFrequency() {
+            const input = [1, 2, 2, 3, 3, 3];
+            document.getElementById('frequencyResult').innerText = `Frequency: ${JSON.stringify(frequencyCounter(input))}`;
+        }
+
+        // 24. Check if a String Contains Only Digits
+        function isOnlyDigits(str) {
+            for (let char of str) {
+                if (char < '0' || char > '9') return false;
+            }
+            return true;
+        }
+        function showIsOnlyDigits() {
+            const input = "12345";
+            document.getElementById('isOnlyDigitsResult').innerText = `Only Digits: ${isOnlyDigits(input)}`;
+        }
+
+        // 25. Capitalize the First Letter of Each Word
+        function capitalizeWords(str) {
+            return str.split(' ').map(word => word[0].toUpperCase() + word.slice(1)).join(' ');
+        }
+        function showCapitalizeWords() {
+            const input = "hello world";
+            document.getElementById('capitalizeWordsResult').innerText = `Capitalized: ${capitalizeWords(input)}`;
+        }
+
+        // 26. Find the Intersection of Two Arrays
+        function arrayIntersection(arr1, arr2) {
+            return arr1.filter(item => arr2.includes(item));
+        }
+        function showIntersection() {
+            const input1 = [1, 2, 3], input2 = [2, 3, 4];
+            document.getElementById('intersectionResult').innerText = `Intersection: ${JSON.stringify(arrayIntersection(input1, input2))}`;
+        }
+
+        // 27. Sort an Array of Strings by Length
+        function sortByLength(arr) {
+            return arr.sort((a, b) => a.length - b.length);
+        }
+        function showSortByLength() {
+            const input = ["apple", "kiwi", "banana", "cherry"];
+            document.getElementById('sortByLengthResult').innerText = `Sorted: ${JSON.stringify(sortByLength(input))}`;
+        }
+
+        // 28. Find the Factorial of a Number
+        function factorial(num) {
+            let result = 1;
+            for (let i = 1; i <= num; i++) {
+                result *= i;
+            }
+            return result;
+        }
+        function showFactorial() {
+            const input = 5;
+            document.getElementById('factorialResult').innerText = `Factorial: ${factorial(input)}`;
+        }
+
+        // 29. Merge Two Sorted Arrays
+        function mergeSortedArrays(arr1, arr2) {
+            let result = [], i = 0, j = 0;
+            while (i < arr1.length && j < arr2.length) {
+                if (arr1[i] < arr2[j]) {
+                    result.push(arr1[i++]);
+                } else {
+                    result.push(arr2[j++]);
+                }
+            }
+            return result.concat(arr1.slice(i)).concat(arr2.slice(j));
+        }
+        function showMergeSorted() {
+            const input1 = [1, 3, 5], input2 = [2, 4, 6];
+            document.getElementById('mergeSortedResult').innerText = `Merged: ${JSON.stringify(mergeSortedArrays(input1, input2))}`;
+        }
+
+        // 30. Remove Falsy Values from an Array
+        function removeFalsy(arr) {
+            return arr.filter(Boolean);
+        }
+        function showRemoveFalsy() {
+            const input = [0, 1, false, 2, "", 3, null];
+            document.getElementById('removeFalsyResult').innerText = `Filtered: ${JSON.stringify(removeFalsy(input))}`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript DSA Problems</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        .problem {
+            margin-bottom: 30px;
+        }
+        h1 {
+            color: #333;
+        }
+        h2 {
+            font-size: 20px;
+            color: #555;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        pre {
+            background: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript DSA Problems</h1>
+
+    <div class="problem">
+        <h2>1. Find the Maximum Number in an Array</h2>
+        <pre>Input: [10, 3, 45, 7, 29]</pre>
+        <button onclick="showMaxNumber()">Show Answer</button>
+        <p id="maxNumberResult"></p>
+    </div>
+
+    <div class="problem">
+        <h2>2. Remove Duplicates from an Array</h2>
+        <pre>Input: [1, 2, 2, 3, 4, 4, 5]</pre>
+        <button onclick="showRemoveDuplicates()">Show Answer</button>
+        <p id="removeDuplicatesResult"></p>
+    </div>
+
+    <div class="problem">
+        <h2>3. Reverse an Array</h2>
+        <pre>Input: [1, 2, 3, 4, 5]</pre>
+        <button onclick="showReverseArray()">Show Answer</button>
+        <p id="reverseArrayResult"></p>
+    </div>
+
+    <div class="problem">
+        <h2>4. Find the Second Largest Element</h2>
+        <pre>Input: [10, 3, 45, 7, 29]</pre>
+        <button onclick="showSecondLargest()">Show Answer</button>
+        <p id="secondLargestResult"></p>
+    </div>
+
+    <div class="problem">
+        <h2>5. Check if an Array is a Subset of Another</h2>
+        <pre>Subset: [1, 3], Array: [1, 2, 3, 4]</pre>
+        <button onclick="showIsSubset()">Show Answer</button>
+        <p id="isSubsetResult"></p>
+    </div>
+
+    <div class="problem">
+        <h2>6. Reverse a String</h2>
+        <pre>Input: "hello world"</pre>
+        <button onclick="showReverseString()">Show Answer</button>
+        <p id="reverseStringResult"></p>
+    </div>
+
+    <div class="problem">
+        <h2>7. Check if a String is a Palindrome</h2>
+        <pre>Input: "racecar"</pre>
+        <button onclick="showIsPalindrome()">Show Answer</button>
+        <p id="isPalindromeResult"></p>
+    </div>
+
+    <div class="problem">
+        <h2>8. Count Vowels in a String</h2>
+        <pre>Input: "Hello World"</pre>
+        <button onclick="showCountVowels()">Show Answer</button>
+        <p id="countVowelsResult"></p>
+    </div>
+
+    <div class="problem">
+        <h2>9. Find the Longest Word in a String</h2>
+        <pre>Input: "The quick brown fox"</pre>
+        <button onclick="showLongestWord()">Show Answer</button>
+        <p id="longestWordResult"></p>
+    </div>
+
+    <div class="problem">
+        <h2>10. Check if Two Strings are Anagrams</h2>
+        <pre>Strings: "listen", "silent"</pre>
+        <button onclick="showAreAnagrams()">Show Answer</button>
+        <p id="areAnagramsResult"></p>
+    </div>
+
+    <!-- Extend as needed -->
+
+    <script>
+        // Functions for each problem
+
+        // 1. Find the Maximum Number in an Array
+        function findMax(arr) {
+            let max = arr[0];
+            for (let i = 1; i < arr.length; i++) {
+                if (arr[i] > max) max = arr[i];
+            }
+            return max;
+        }
+
+        function showMaxNumber() {
+            const arr = [10, 3, 45, 7, 29];
+            const result = findMax(arr);
+            document.getElementById('maxNumberResult').innerText = `Maximum Number: ${result}`;
+        }
+
+        // 2. Remove Duplicates from an Array
+        function removeDuplicates(arr) {
+            const result = [];
+            for (let i = 0; i < arr.length; i++) {
+                if (!result.includes(arr[i])) result.push(arr[i]);
+            }
+            return result;
+        }
+
+        function showRemoveDuplicates() {
+            const arr = [1, 2, 2, 3, 4, 4, 5];
+            const result = removeDuplicates(arr);
+            document.getElementById('removeDuplicatesResult').innerText = `Array without duplicates: ${result.join(', ')}`;
+        }
+
+        // 3. Reverse an Array
+        function reverseArray(arr) {
+            const result = [];
+            for (let i = arr.length - 1; i >= 0; i--) {
+                result.push(arr[i]);
+            }
+            return result;
+        }
+
+        function showReverseArray() {
+            const arr = [1, 2, 3, 4, 5];
+            const result = reverseArray(arr);
+            document.getElementById('reverseArrayResult').innerText = `Reversed Array: ${result.join(', ')}`;
+        }
+
+        // 4. Find the Second Largest Element
+        function findSecondLargest(arr) {
+            let max = -Infinity, secondMax = -Infinity;
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] > max) {
+                    secondMax = max;
+                    max = arr[i];
+                } else if (arr[i] > secondMax && arr[i] !== max) {
+                    secondMax = arr[i];
+                }
+            }
+            return secondMax === -Infinity ? null : secondMax;
+        }
+
+        function showSecondLargest() {
+            const arr = [10, 3, 45, 7, 29];
+            const result = findSecondLargest(arr);
+            document.getElementById('secondLargestResult').innerText = `Second Largest: ${result}`;
+        }
+
+        // 5. Check if an Array is a Subset of Another
+        function isSubset(arr1, arr2) {
+            for (let i = 0; i < arr1.length; i++) {
+                if (!arr2.includes(arr1[i])) return false;
+            }
+            return true;
+        }
+
+        function showIsSubset() {
+            const subset = [1, 3];
+            const arr = [1, 2, 3, 4];
+            const result = isSubset(subset, arr);
+            document.getElementById('isSubsetResult').innerText = `Is Subset: ${result}`;
+        }
+
+        // 6. Reverse a String
+        function reverseString(str) {
+            let result = '';
+            for (let i = str.length - 1; i >= 0; i--) {
+                result += str[i];
+            }
+            return result;
+        }
+
+        function showReverseString() {
+            const str = "hello world";
+            const result = reverseString(str);
+            document.getElementById('reverseStringResult').innerText = `Reversed String: "${result}"`;
+        }
+
+        // 7. Check if a String is a Palindrome
+        function isPalindrome(str) {
+            const reversed = reverseString(str);
+            return str === reversed;
+        }
+
+        function showIsPalindrome() {
+            const str = "racecar";
+            const result = isPalindrome(str);
+            document.getElementById('isPalindromeResult').innerText = `Is Palindrome: ${result}`;
+        }
+
+        // 8. Count Vowels in a String
+        function countVowels(str) {
+            const vowels = 'aeiouAEIOU';
+            let count = 0;
+            for (let i = 0; i < str.length; i++) {
+                if (vowels.includes(str[i])) count++;
+            }
+            return count;
+        }
+
+        function showCountVowels() {
+            const str = "Hello World";
+            const result = countVowels(str);
+            document.getElementById('countVowelsResult').innerText = `Vowel Count: ${result}`;
+        }
+
+        // 9. Find the Longest Word in a String
+        function findLongestWord(sentence) {
+            const words = sentence.split(' ');
+            let longest = '';
+            for (let i = 0; i < words.length; i++) {
+                if (words[i].length > longest.length) longest = words[i];
+            }
+            return longest;
+        }
+
+        function showLongestWord() {
+            const sentence = "The quick brown fox";
+            const result = findLongestWord(sentence);
+            document.getElementById('longestWordResult').innerText = `Longest Word: "${result}"`;
+        }
+
+        // 10. Check if Two Strings are Anagrams
+        function areAnagrams(str1, str2) {
+            const format = (str) => str.toLowerCase().split('').sort().join('');
+            return format(str1) === format(str2);
+        }
+
+        function showAreAnagrams() {
+            const str1 = "listen";
+            const str2 = "silent";
+            const result = areAnagrams(str1, str2);
+            document.getElementById('areAnagramsResult').innerText = `Are Anagrams: ${result}`;
+        }
+    </script>
+</body>
+</html>

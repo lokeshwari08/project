@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript DSA Problems Part 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .problem {
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        h2 {
+            font-size: 18px;
+            color: #555;
+        }
+        button {
+            margin: 5px 0;
+            padding: 8px 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        p {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript DSA Problems - Part 2</h1>
+
+    <div class="problem">
+        <h2>11. Check if a Variable is an Array</h2>
+        <pre>Input: [1, 2, 3]</pre>
+        <button onclick="showIsArray()">Show Answer</button>
+        <p id="isArrayResult"></p>
+    </div>
+
+    <div class="problem">
+        <h2>12. Convert a String to a Number</h2>
+        <pre>Input: "1234"</pre>
+        <button onclick="showStringToNumber()">Show Answer</button>
+        <p id="stringToNumberResult"></p>
+    </div>
+
+    <div class="problem">
+        <h2>13. Check if a Number is an Integer</h2>
+        <pre>Input: 42</pre>
+        <button onclick="showIsInteger()">Show Answer</button>
+        <p id="isIntegerResult"></p>
+    </div>
+
+    <div class="problem">
+        <h2>14. Get the Data Type of a Variable</h2>
+        <pre>Input: true</pre>
+        <button onclick="showDataType()">Show Answer</button>
+        <p id="dataTypeResult"></p>
+    </div>
+
+    <div class="problem">
+        <h2>15. Check if a Value is Null or Undefined</h2>
+        <pre>Input: null</pre>
+        <button onclick="showIsNullOrUndefined()">Show Answer</button>
+        <p id="isNullOrUndefinedResult"></p>
+    </div>
+
+    <div class="problem">
+        <h2>16. Swap Two Numbers Without Using a Third Variable</h2>
+        <pre>Input: a = 5, b = 3</pre>
+        <button onclick="showSwapNumbers()">Show Answer</button>
+        <p id="swapNumbersResult"></p>
+    </div>
+
+    <div class="problem">
+        <h2>17. Check if a Number is Even or Odd</h2>
+        <pre>Input: 7</pre>
+        <button onclick="showIsEvenOrOdd()">Show Answer</button>
+        <p id="isEvenOrOddResult"></p>
+    </div>
+
+    <div class="problem">
+        <h2>18. Find the Square of a Number</h2>
+        <pre>Input: 4</pre>
+        <button onclick="showSquare()">Show Answer</button>
+        <p id="squareResult"></p>
+    </div>
+
+    <div class="problem">
+        <h2>19. Use the Ternary Operator for Conditions</h2>
+        <pre>Input: Age = 18</pre>
+        <button onclick="showAdultOrMinor()">Show Answer</button>
+        <p id="adultOrMinorResult"></p>
+    </div>
+
+    <div class="problem">
+        <h2>20. Check if a Number is Divisible by Another</h2>
+        <pre>Input: 10, Divisor: 2</pre>
+        <button onclick="showIsDivisible()">Show Answer</button>
+        <p id="isDivisibleResult"></p>
+    </div>
+
+    <!-- More problems can be added following the structure above -->
+    
+    <script>
+        // 11. Check if a Variable is an Array
+        function isArray(value) {
+            return Array.isArray(value);
+        }
+        function showIsArray() {
+            const input = [1, 2, 3];
+            document.getElementById('isArrayResult').innerText = `Is Array: ${isArray(input)}`;
+        }
+
+        // 12. Convert a String to a Number
+        function stringToNumber(str) {
+            let num = 0;
+            for (let i = 0; i < str.length; i++) {
+                num = num * 10 + (str[i] - '0');
+            }
+            return num;
+        }
+        function showStringToNumber() {
+            const input = "1234";
+            document.getElementById('stringToNumberResult').innerText = `Converted Number: ${stringToNumber(input)}`;
+        }
+
+        // 13. Check if a Number is an Integer
+        function isInteger(num) {
+            return num % 1 === 0;
+        }
+        function showIsInteger() {
+            const input = 42;
+            document.getElementById('isIntegerResult').innerText = `Is Integer: ${isInteger(input)}`;
+        }
+
+        // 14. Get the Data Type of a Variable
+        function getDataType(value) {
+            return typeof value;
+        }
+        function showDataType() {
+            const input = true;
+            document.getElementById('dataTypeResult').innerText = `Data Type: ${getDataType(input)}`;
+        }
+
+        // 15. Check if a Value is Null or Undefined
+        function isNullOrUndefined(value) {
+            return value === null || value === undefined;
+        }
+        function showIsNullOrUndefined() {
+            const input = null;
+            document.getElementById('isNullOrUndefinedResult').innerText = `Is Null or Undefined: ${isNullOrUndefined(input)}`;
+        }
+
+        // 16. Swap Two Numbers Without Using a Third Variable
+        function swapNumbers(a, b) {
+            a = a + b;
+            b = a - b;
+            a = a - b;
+            return [a, b];
+        }
+        function showSwapNumbers() {
+            let a = 5, b = 3;
+            const result = swapNumbers(a, b);
+            document.getElementById('swapNumbersResult').innerText = `Swapped Numbers: a = ${result[0]}, b = ${result[1]}`;
+        }
+
+        // 17. Check if a Number is Even or Odd
+        function isEvenOrOdd(num) {
+            return num % 2 === 0 ? 'Even' : 'Odd';
+        }
+        function showIsEvenOrOdd() {
+            const input = 7;
+            document.getElementById('isEvenOrOddResult').innerText = `The Number is: ${isEvenOrOdd(input)}`;
+        }
+
+        // 18. Find the Square of a Number
+        function square(num) {
+            return num * num;
+        }
+        function showSquare() {
+            const input = 4;
+            document.getElementById('squareResult').innerText = `Square: ${square(input)}`;
+        }
+
+        // 19. Use the Ternary Operator for Conditions
+        function isAdult(age) {
+            return age >= 18 ? 'Adult' : 'Minor';
+        }
+        function showAdultOrMinor() {
+            const age = 18;
+            document.getElementById('adultOrMinorResult').innerText = `The person is: ${isAdult(age)}`;
+        }
+
+        // 20. Check if a Number is Divisible by Another
+        function isDivisible(num, divisor) {
+            return num % divisor === 0;
+        }
+        function showIsDivisible() {
+            const num = 10, divisor = 2;
+            document.getElementById('isDivisibleResult').innerText = `Is Divisible: ${isDivisible(num, divisor)}`;
+        }
+    </script>
+</body>
+</html>
